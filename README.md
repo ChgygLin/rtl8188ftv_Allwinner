@@ -1,3 +1,5 @@
+JW Todo: update this with instructions specifically for the Allwinner/Sunxi chips.
+
 For Kernel 4.15.x ~ 5.15.x (Linux Mint, Ubuntu or Debian Derivatives)
 
 ------------------
