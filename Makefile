@@ -24,6 +24,9 @@ EXTRA_LDFLAGS += --strip-debug
 
 CONFIG_AUTOCFG_CP = n
 
+########################## SIGNING ############################
+CONFIG_MODULE_SIG = n
+
 ########################## WIFI IC ############################
 CONFIG_RTL8188E = n
 CONFIG_RTL8812A = n
