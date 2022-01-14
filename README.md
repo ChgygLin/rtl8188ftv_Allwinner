@@ -7,8 +7,10 @@ Compatible with both USB Type-A dongles/adapters, and embedded 2.4ghz wireless r
 
 ## Installation
 
-Begin by running `uname -a`, note your version number (not kernel version), and add it to the first command:
-1) `apt install -y dkms make git linux-headers-current-sunxi=00.00.0` (replace 00.00.0 with your version number)
+Begin by installing kernel headers for your operating system. For example, in Armbian, we'll run armbian-config and go to Software > Headers_install. Once that is complete, reboot.
+
+Now, run `uname -a`, note your version number (not kernel version), and add it to the first command:
+1) `apt install -y dkms make git linux-headers-current-sunxi=xx.yy.z` (replace xx.yy.z with your version number)
 
 2) `cd /usr/src/linux-headers-$(uname -r) && make scripts`
 
