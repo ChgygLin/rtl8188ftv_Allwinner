@@ -42,7 +42,7 @@ Run following commands for disable power management and plugging/replugging issu
 
 #### Disable MAC Address Spoofing
 
-Run following commands for disabling MAC Address Spoofing (Note: This is not needed on Ubuntu based distributions. MAC Address Spoofing is already disable on Ubuntu base).
+Run following commands for disabling MAC Address Spoofing (Note: This is not needed on Ubuntu based distributions. MAC Address Spoofing is already disabled on Ubuntu base).
 
 `sudo mkdir -p /etc/NetworkManager/conf.d/`
 
