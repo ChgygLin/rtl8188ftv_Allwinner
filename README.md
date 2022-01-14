@@ -1,24 +1,30 @@
-JW Todo: update this with instructions specifically for the Allwinner/Sunxi chips.
+RTL8188FTV Driver for Allwinner Sunxi ARM SoCs.
+For Kernel 4.15.x ~ 5.15.x on Linux Debian & Armbian (including derivatives).
 
-For Kernel 4.15.x ~ 5.15.x (Linux Mint, Ubuntu or Debian Derivatives)
+Compatible with both USB Type-A dongles/adapters, and embedded 2.4ghz wireless radio modules, using the Realtek RTL8188FTV chip. Modified from Kelebek333's rtl8188fu driver.
 
 ------------------
 
-## How to install (for arm devices)
+## Installation
 
-`sudo ln -s /lib/modules/$(uname -r)/build/arch/arm /lib/modules/$(uname -r)/build/arch/armv7l`
+Begin by running `uname -a`, note your version number (not kernel version), and add it to the first command:
+1) `apt install -y dkms make git linux-headers-current-sunxi=00.00.0` (replace 00.00.0 with your version number)
 
-`sudo apt-get install build-essential git dkms linux-headers-$(uname -r)`
+2) `cd /usr/src/linux-headers-$(uname -r) && make scripts`
 
-`git clone -b arm https://github.com/kelebek333/rtl8188fu rtl8188fu-arm`
+3) `cd /tmp && git clone https://github.com/julianwhitehm/rtl8188ftv_Allwinner`
 
-`sudo dkms add ./rtl8188fu-arm`
+4) `ln -s /lib/modules/$(uname -r)/build/arch/arm /lib/modules/$(uname -r)/build/arch/armv7l`
 
-`sudo dkms build rtl8188fu/1.0`
+5) `dkms add ./rtl8188ftv_Allwinner`
 
-`sudo dkms install rtl8188fu/1.0`
+6) `dkms build rtl8188fu/1.0`
 
-`sudo cp ./rtl8188fu-arm/firmware/rtl8188fufw.bin /lib/firmware/rtlwifi/`
+7) `dkms install rtl8188fu/1.0`
+
+8) `cp -r ./rtl8188ftv_Allwinner/firmware/rtl8188fufw.bin /lib/firmware/rtlwifi/ && modprobe rtl8188fu`
+
+9) `rm -rf /tmp/rtl8188ftv_Allwinner`
 
 ------------------
 
@@ -52,7 +58,7 @@ If you are using kernel 5.15 and newer, you must create a configuration file wit
 
 ------------------
 
-## How to uninstall
+## Uninstalling
 
 `sudo dkms remove rtl8188fu/1.0 --all`
 
@@ -60,4 +66,9 @@ If you are using kernel 5.15 and newer, you must create a configuration file wit
 
 `sudo rm -f /etc/modprobe.d/rtl8188fu.conf`
 
+------------------
 
+## Platform Testing
+
+Tested with Orange Pi Zero Plus 2 (Allwinner H3).
+I will expand this section as more platforms are tested.
