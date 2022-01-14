@@ -70,5 +70,5 @@ If you are using kernel 5.15 and newer, you must create a configuration file wit
 
 ## Platform Testing
 
-Tested with Orange Pi Zero Plus 2 (Allwinner H3).
+Currently known working with Orange Pi Zero Plus 2 (Allwinner H3).
 I will expand this section as more platforms are tested.
