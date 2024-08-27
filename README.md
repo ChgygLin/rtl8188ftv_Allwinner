@@ -1,5 +1,5 @@
-RTL8188FTV Driver for Allwinner Sunxi ARM SoCs.
-For Kernel 4.15.x ~ 5.15.x on Linux Debian & Armbian (including derivatives).
+RTL8188FTV Driver for RK3588 OrangePi 5.
+For Kernel 5.10.110 on Linux Ubuntu Jammy.
 
 Compatible with both USB Type-A dongles/adapters, and embedded 2.4ghz wireless radio modules, using the Realtek RTL8188FTV chip. Modified from Kelebek333's rtl8188fu driver.
 
@@ -7,26 +7,13 @@ Compatible with both USB Type-A dongles/adapters, and embedded 2.4ghz wireless r
 
 ## Installation
 
-Begin by installing kernel headers for your operating system. For example, in Armbian, we'll run armbian-config and go to Software > Headers_install. Once that is complete, reboot your system.
+OrangePi5 linux headers: https://drive.google.com/drive/folders/1SiUkTWQ5X7U07e5GJvLirqtrVRCIxfr5
 
-Now, run `uname -a`, note your version number (not kernel version), and add it to the first command:
-1) `apt install -y dkms make git linux-headers-current-sunxi=xx.yy.z` (replace xx.yy.z with your version number)
+linux-headers-legacy-rockchip-rk3588_1.1.2_arm64.deb
 
-2) `cd /usr/src/linux-headers-$(uname -r) && make scripts`
-
-3) `cd /tmp && git clone https://github.com/julianwhitehm/rtl8188ftv_Allwinner`
-
-4) `ln -s /lib/modules/$(uname -r)/build/arch/arm /lib/modules/$(uname -r)/build/arch/armv7l`
-
-5) `dkms add ./rtl8188ftv_Allwinner`
-
-6) `dkms build rtl8188fu/1.0`
-
-7) `dkms install rtl8188fu/1.0`
-
-8) `cp -r ./rtl8188ftv_Allwinner/firmware/rtl8188fufw.bin /lib/firmware/rtlwifi/ && modprobe rtl8188fu`
-
-9) `rm -rf /tmp/rtl8188ftv_Allwinner`
+1) `cd rtl8188ftv_Allwinner`
+2) `make -j && make install`
+3) `cp -r ./firmware/rtl8188fufw.bin /lib/firmware/rtlwifi/ && modprobe rtl8188fu`
 
 ------------------
 
