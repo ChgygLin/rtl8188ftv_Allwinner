@@ -17,6 +17,8 @@ EXTRA_CFLAGS += -Wno-unused
 #EXTRA_CFLAGS += -Wno-uninitialized
 #EXTRA_CFLAGS += -Wno-error=date-time	# Fix compile error on gcc 4.9 and later
 
+EXTRA_CFLAGS += -w
+
 EXTRA_CFLAGS += -I$(src)/include
 EXTRA_CFLAGS += -I$(src)/hal/phydm
 
@@ -404,7 +406,7 @@ EXTRA_CFLAGS += -DDM_ODM_SUPPORT_TYPE=0x04
 ifeq ($(CONFIG_PLATFORM_I386_PC), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
 EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
-SUBARCH := $(shell uname -m | sed -e s/i.86/i386/ | sed -e s/armv6l/arm/)
+SUBARCH := arm64
 ARCH ?= $(SUBARCH)
 CROSS_COMPILE ?=
 KVER  := $(shell uname -r)
@@ -466,6 +468,7 @@ obj-$(CONFIG_RTL8188FU) := rtl8188fu.o
 else
 
 export CONFIG_RTL8188FU = m
+MODULE_NAME = rtl8188fu
 
 all: modules
 
